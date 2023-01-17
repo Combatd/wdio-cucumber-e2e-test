@@ -1,4 +1,5 @@
 import { Given, When, Then } from "@wdio/cucumber-framework";
+import chai from 'chai';
 
 Given(/^Google page is opened$/, async function() {
   console.log('Before opening browser...');
@@ -16,5 +17,11 @@ When(/^Search with (.*)$/, async function(searchItem) {
 
 Then(/^Click on the first search result$/, async function() {
   let ele = await $('<h3>');
-  ele.click();
+  await ele.click();
 });
+
+Then(/^URL should match (.*)$/, async function(expectedURL) {
+  console.log(`>> expectedURL: ${expectedURL}`);
+  let url = await browser.getUrl();
+  await chai.expect(url).to.equal(expectedURL);
+}); 
