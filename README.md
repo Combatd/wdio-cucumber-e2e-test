@@ -19,8 +19,9 @@
 
 ## Test Plan Format
 
-Feature: Feature name
 ```
+Feature: Feature name
+
     Feature Description
     Scenario Outline: Scenario Outline name
       Given Start to type your Given step here
