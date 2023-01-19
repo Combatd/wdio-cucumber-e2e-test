@@ -30,3 +30,12 @@ Then(/^URL should match (.*)$/, async function(expectedURL) {
  * Web Interactions
  */
 
+Given(/^A web page is opened$/, async function() {
+  await browser.url('https://google.com');
+  await browser.setTimeout({implicit: 15000, pageLoad: 15000});
+  await browser.maximizeWindow();
+});
+
+When(/^Perform web interactions$/, async function() {
+  await browser.url('https://startpage.com');
+});

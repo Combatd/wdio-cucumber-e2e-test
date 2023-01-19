@@ -1,10 +1,12 @@
-Feature: Web Interactions
+Feature: Demo Feature
 
   @demo
-  Scenario Outline: Demo Web Interactions
-    Given A web page is opened
-    When Perform web Interactions
+  Scenario Outline: Run first demo feature
+    Given Google page is opened
+    When Search with <SearchItem>
+    Then Click on the first search result
+    Then URL should match <ExpectedURL>
 
   Examples:
-    | TestID | 
-    | WEB_TC002 |
+    | TestID | SearchItem | ExpectedURL |
+    | DEMO_TC001 | WDIO | https://webdriver.io |
