@@ -61,4 +61,9 @@ When(/^Perform web interactions$/, async function() {
   await browser.keys('Enter');
   await browser.pause(1500);
   await chai.expect(await browser.getUrl()).to.contain('google');
+
+  let ddEle = await $('[aria-label="Google apps"]');
+  // await ddEle.selectByAttribute('value', '1');
+  await ddEle.click();
+  browser.pause(3000);
 });
