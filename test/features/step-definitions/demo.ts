@@ -37,5 +37,28 @@ Given(/^A web page is opened$/, async function() {
 });
 
 When(/^Perform web interactions$/, async function() {
-  await browser.url('https://startpage.com');
+  /**
+   * 1. Input Box
+   * Actions:
+   * 1. Type into input box
+   * 2. Clear the field or just addvalue
+   * 3. Click and type
+   * 4. Slow typing
+   */
+  let num = 12345;
+  let strNum = num.toString();
+
+  let ele = await $(`[name=q]`);
+  ele.setValue('Las Vegas Hotel'); // #setValue clears the input before putting a value
+  await browser.pause(3000);
+  await browser.keys('Enter');
+  await browser.pause(5000);
+
+  await browser.url('https://www.google.com/');
+  ele.clearValue();
+  ele.addValue(strNum);
+  browser.pause(3000);
+  await browser.keys('Enter');
+  await browser.pause(1500);
+  await chai.expect(await browser.getUrl()).to.contain('google');
 });
