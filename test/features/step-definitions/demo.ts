@@ -76,21 +76,59 @@ When(/^Perform web interactions$/, async function() {
    * 4.Select all options
    * 
    */
-  let checkboxEle = await $('//form[@id="checkboxes]/input[1]') // you can right click and copy xpath when inspecting
+  // let checkboxEle = await $('//form[@id="checkboxes]/input[1]') // you can right click and copy xpath when inspecting
   
-  let isChecked = await checkboxEle.isSelected();
-  await chai.expect(isChecked).to.be.true;
-  // if (!await checkboxEle.isSelected()) {
-  //   await checkboxEle.click();
+  // let isChecked = await checkboxEle.isSelected();
+  // await chai.expect(isChecked).to.be.true;
+  // // if (!await checkboxEle.isSelected()) {
+  // //   await checkboxEle.click();
+  // // }
+
+  // let checkboxesEle = await $('//form[@id="checkboxes]/input') // you can right click and copy xpath when inspecting
+  // for (let i = 0; i < checkboxesEle.length; i++) {
+  //   let ele = checkboxesEle[i];
+  //   if (await ele.isSelected()) {
+  //     await ele.click();
+  //   }
   // }
 
-  let checkboxesEle = await $('//form[@id="checkboxes]/input') // you can right click and copy xpath when inspecting
-  for (let i = 0; i < checkboxesEle.length; i++) {
-    let ele = checkboxesEle[i];
-    if (await ele.isSelected()) {
-      await ele.click();
+  /**
+   * 4. Window handling
+   * Actions:
+   * 1. getTitle()
+   * 2. getWindowHandle()
+   * 3. getWindowHandles()
+   * 4. switchToWindow()
+   */
+
+  await $('=Click Here').click(); // link text
+  await $('=Elemental Selenium').click();
+  let currentWinTitle = await browser.getTitle();
+  let parentWinHandle = await browser.getWindowHandle();
+  console.log('>> currentWinTitle: ' + currentWinTitle);
+
+
+  // Switch to specific window
+  let winHandles = await browser.getWindowHandles();
+  for (let i = 0; i < winHandles.length; i++) {
+    console.log(`>> winHandle: ${winHandles[i]}`); // print out the new window title
+    await browser.switchToWindow(winHandles[i]); // will switch to the new window
+    if (currentWinTitle === "Elemental Selenium: Receive a Free, Weekly Tip on Using Selenium like a Pro") {
+      await browser.switchToWindow(winHandles[i]);
+      let headerTxtEleSel = await $('<h1>');
+      console.log(`headerTxtEleSel: ${headerTxtEleSel}`);
+
+      // Rest of the actions go here
+      break;
     }
   }
+
+  // Switch back to parent window
+  await browser.switchToWindow(parentWinHandle);
+  let parentWinHeaderText = await $('<h1>').getText();
+  console.log(`>> parentWinHeaderText: ${parentWinHeaderText}`);
+  // Continue with the rest of the execution
+
 
   await browser.debug();
 
