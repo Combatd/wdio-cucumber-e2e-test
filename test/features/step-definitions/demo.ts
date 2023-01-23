@@ -66,4 +66,32 @@ When(/^Perform web interactions$/, async function() {
   // await ddEle.selectByAttribute('value', '1');
   await ddEle.click();
   browser.pause(3000);
+
+  /**
+   * 3. Checkbox
+   * Actions:
+   * 1. Select an option
+   * 2. Unselect an option (if selected)
+   * 3. Assert if option is selected
+   * 4.Select all options
+   * 
+   */
+  let checkboxEle = await $('//form[@id="checkboxes]/input[1]') // you can right click and copy xpath when inspecting
+  
+  let isChecked = await checkboxEle.isSelected();
+  await chai.expect(isChecked).to.be.true;
+  // if (!await checkboxEle.isSelected()) {
+  //   await checkboxEle.click();
+  // }
+
+  let checkboxesEle = await $('//form[@id="checkboxes]/input') // you can right click and copy xpath when inspecting
+  for (let i = 0; i < checkboxesEle.length; i++) {
+    let ele = checkboxesEle[i];
+    if (await ele.isSelected()) {
+      await ele.click();
+    }
+  }
+
+  await browser.debug();
+
 });
