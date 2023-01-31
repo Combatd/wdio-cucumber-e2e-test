@@ -140,15 +140,24 @@ When(/^Perform web interactions$/, async function() {
    * 5. sendAlertText()
    */
 
-  await $('button=Click for JS Alert').click();
-  if (await browser.isAlertOpen()) {
-    let alertText = await browser.getAlertText();
-    console.log(alertText);
-    // await browser.dismissAlert();
-    await browser.acceptAlert();
-    await browser.pause(2000);
+  // await $('button=Click for JS Alert').click();
+  // if (await browser.isAlertOpen()) {
+  //   let alertText = await browser.getAlertText();
+  //   console.log(alertText);
+  //   // await browser.dismissAlert();
+  //   await browser.acceptAlert();
+  //   await browser.pause(2000);
 
-  }
+  // }
+
+  /**
+   * 5. File upload
+   */
+  // await $('#file-upload').setValue('dd');
+  // await $('#file-upload').addValue('../../../data/fileupload/dummy.txt'); // The relative path here will not work!
+  await $('#file-upload').addValue(`${process.cwd()}/data/fileupload/dummy.txt`); // Use absolute path for file upload
+
+  await $('#file-submit').click();
 
 
   await browser.debug();
