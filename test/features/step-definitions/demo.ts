@@ -101,33 +101,54 @@ When(/^Perform web interactions$/, async function() {
    * 4. switchToWindow()
    */
 
-  await $('=Click Here').click(); // link text
-  await $('=Elemental Selenium').click();
-  let currentWinTitle = await browser.getTitle();
-  let parentWinHandle = await browser.getWindowHandle();
-  console.log('>> currentWinTitle: ' + currentWinTitle);
+  // await $('=Click Here').click(); // link text
+  // await $('=Elemental Selenium').click();
+  // let currentWinTitle = await browser.getTitle();
+  // let parentWinHandle = await browser.getWindowHandle();
+  // console.log('>> currentWinTitle: ' + currentWinTitle);
 
 
-  // Switch to specific window
-  let winHandles = await browser.getWindowHandles();
-  for (let i = 0; i < winHandles.length; i++) {
-    console.log(`>> winHandle: ${winHandles[i]}`); // print out the new window title
-    await browser.switchToWindow(winHandles[i]); // will switch to the new window
-    if (currentWinTitle === "Elemental Selenium: Receive a Free, Weekly Tip on Using Selenium like a Pro") {
-      await browser.switchToWindow(winHandles[i]);
-      let headerTxtEleSel = await $('<h1>');
-      console.log(`headerTxtEleSel: ${headerTxtEleSel}`);
+  // // Switch to specific window
+  // let winHandles = await browser.getWindowHandles();
+  // for (let i = 0; i < winHandles.length; i++) {
+  //   console.log(`>> winHandle: ${winHandles[i]}`); // print out the new window title
+  //   await browser.switchToWindow(winHandles[i]); // will switch to the new window
+  //   if (currentWinTitle === "Elemental Selenium: Receive a Free, Weekly Tip on Using Selenium like a Pro") {
+  //     await browser.switchToWindow(winHandles[i]);
+  //     let headerTxtEleSel = await $('<h1>');
+  //     console.log(`headerTxtEleSel: ${headerTxtEleSel}`);
 
-      // Rest of the actions go here
-      break;
-    }
+  //     // Rest of the actions go here
+  //     break;
+  //   }
+  // }
+
+  // // Switch back to parent window
+  // await browser.switchToWindow(parentWinHandle);
+  // let parentWinHeaderText = await $('<h1>').getText();
+  // console.log(`>> parentWinHeaderText: ${parentWinHeaderText}`);
+  // // Continue with the rest of the execution
+
+  /**
+   * 4. Handling alerts
+   * 
+   * Methods used:
+   * 1. isAlertOpen()
+   * 2. acceptAlert()
+   * 3. dismissAlert()
+   * 4. getAlertText()
+   * 5. sendAlertText()
+   */
+
+  await $('button=Click for JS Alert').click();
+  if (await browser.isAlertOpen()) {
+    let alertText = await browser.getAlertText();
+    console.log(alertText);
+    // await browser.dismissAlert();
+    await browser.acceptAlert();
+    await browser.pause(2000);
+
   }
-
-  // Switch back to parent window
-  await browser.switchToWindow(parentWinHandle);
-  let parentWinHeaderText = await $('<h1>').getText();
-  console.log(`>> parentWinHeaderText: ${parentWinHeaderText}`);
-  // Continue with the rest of the execution
 
 
   await browser.debug();
