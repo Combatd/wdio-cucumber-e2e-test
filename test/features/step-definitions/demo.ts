@@ -61,4 +61,119 @@ When(/^Perform web interactions$/, async function() {
   await browser.keys('Enter');
   await browser.pause(1500);
   await chai.expect(await browser.getUrl()).to.contain('google');
+
+  let ddEle = await $('[aria-label="Google apps"]');
+  // await ddEle.selectByAttribute('value', '1');
+  await ddEle.click();
+  browser.pause(3000);
+
+  /**
+   * 3. Checkbox
+   * Actions:
+   * 1. Select an option
+   * 2. Unselect an option (if selected)
+   * 3. Assert if option is selected
+   * 4.Select all options
+   * 
+   */
+  // let checkboxEle = await $('//form[@id="checkboxes]/input[1]') // you can right click and copy xpath when inspecting
+  
+  // let isChecked = await checkboxEle.isSelected();
+  // await chai.expect(isChecked).to.be.true;
+  // // if (!await checkboxEle.isSelected()) {
+  // //   await checkboxEle.click();
+  // // }
+
+  // let checkboxesEle = await $('//form[@id="checkboxes]/input') // you can right click and copy xpath when inspecting
+  // for (let i = 0; i < checkboxesEle.length; i++) {
+  //   let ele = checkboxesEle[i];
+  //   if (await ele.isSelected()) {
+  //     await ele.click();
+  //   }
+  // }
+
+  /**
+   * 4. Window handling
+   * Actions:
+   * 1. getTitle()
+   * 2. getWindowHandle()
+   * 3. getWindowHandles()
+   * 4. switchToWindow()
+   */
+
+  // await $('=Click Here').click(); // link text
+  // await $('=Elemental Selenium').click();
+  // let currentWinTitle = await browser.getTitle();
+  // let parentWinHandle = await browser.getWindowHandle();
+  // console.log('>> currentWinTitle: ' + currentWinTitle);
+
+
+  // // Switch to specific window
+  // let winHandles = await browser.getWindowHandles();
+  // for (let i = 0; i < winHandles.length; i++) {
+  //   console.log(`>> winHandle: ${winHandles[i]}`); // print out the new window title
+  //   await browser.switchToWindow(winHandles[i]); // will switch to the new window
+  //   if (currentWinTitle === "Elemental Selenium: Receive a Free, Weekly Tip on Using Selenium like a Pro") {
+  //     await browser.switchToWindow(winHandles[i]);
+  //     let headerTxtEleSel = await $('<h1>');
+  //     console.log(`headerTxtEleSel: ${headerTxtEleSel}`);
+
+  //     // Rest of the actions go here
+  //     break;
+  //   }
+  // }
+
+  // // Switch back to parent window
+  // await browser.switchToWindow(parentWinHandle);
+  // let parentWinHeaderText = await $('<h1>').getText();
+  // console.log(`>> parentWinHeaderText: ${parentWinHeaderText}`);
+  // // Continue with the rest of the execution
+
+  /**
+   * 4. Handling alerts
+   * 
+   * Methods used:
+   * 1. isAlertOpen()
+   * 2. acceptAlert()
+   * 3. dismissAlert()
+   * 4. getAlertText()
+   * 5. sendAlertText()
+   */
+
+  // await $('button=Click for JS Alert').click();
+  // if (await browser.isAlertOpen()) {
+  //   let alertText = await browser.getAlertText();
+  //   console.log(alertText);
+  //   // await browser.dismissAlert();
+  //   await browser.acceptAlert();
+  //   await browser.pause(2000);
+
+  // }
+
+  /**
+   * 5. File upload
+   */
+  // await $('#file-upload').setValue('dd');
+  // await $('#file-upload').addValue('../../../data/fileupload/dummy.txt'); // The relative path here will not work!
+  // await $('#file-upload').addValue(`${process.cwd()}/data/fileupload/dummy.txt`); // Use absolute path for file upload
+
+  // await $('#file-submit').click();
+
+  /**
+   * 6. Frames
+   * Methods used
+   * 1. switchToFrame
+   * 2. switchtoParentFrame
+   */  
+  
+  await $('=iFrame').click();
+  let frameEle = await $('#mce_0)str');
+  await browser.switchToFrame(frameEle);
+  // Interactions with frames...
+  await $('#tinymce').setValue('Typing into a frame...'); // Set value of the text, override existing
+  await $('#tinymce').addValue('Typing into a frame...'); // Add value to existing text
+  await browser.switchToParentFrame();
+
+  await browser.debug();
+
 });
