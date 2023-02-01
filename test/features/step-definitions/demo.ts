@@ -155,10 +155,24 @@ When(/^Perform web interactions$/, async function() {
    */
   // await $('#file-upload').setValue('dd');
   // await $('#file-upload').addValue('../../../data/fileupload/dummy.txt'); // The relative path here will not work!
-  await $('#file-upload').addValue(`${process.cwd()}/data/fileupload/dummy.txt`); // Use absolute path for file upload
+  // await $('#file-upload').addValue(`${process.cwd()}/data/fileupload/dummy.txt`); // Use absolute path for file upload
 
-  await $('#file-submit').click();
+  // await $('#file-submit').click();
 
+  /**
+   * 6. Frames
+   * Methods used
+   * 1. switchToFrame
+   * 2. switchtoParentFrame
+   */  
+  
+  await $('=iFrame').click();
+  let frameEle = await $('#mce_0)str');
+  await browser.switchToFrame(frameEle);
+  // Interactions with frames...
+  await $('#tinymce').setValue('Typing into a frame...'); // Set value of the text, override existing
+  await $('#tinymce').addValue('Typing into a frame...'); // Add value to existing text
+  await browser.switchToParentFrame();
 
   await browser.debug();
 
