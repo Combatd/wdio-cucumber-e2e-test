@@ -166,11 +166,29 @@ When(/^Perform web interactions$/, async function() {
    * 2. switchtoParentFrame
    */  
   
+  // await $('=iFrame').click();
+  // let frameEle = await $('#mce_0)str');
+  // await browser.switchToFrame(frameEle);
+  // // Interactions with frames...
+  // await $('#tinymce').setValue('Typing into a frame...'); // Set value of the text, override existing
+  // await $('#tinymce').addValue('Typing into a frame...'); // Add value to existing text
+  // await browser.switchToParentFrame();
+
+  /**
+   * 7. Key press
+   * Methods used:
+   * 1. switchToFrame
+   * 2. switchtoParentFrame
+   */
+
   await $('=iFrame').click();
   let frameEle = await $('#mce_0)str');
   await browser.switchToFrame(frameEle);
   // Interactions with frames...
-  await $('#tinymce').setValue('Typing into a frame...'); // Set value of the text, override existing
+  await $('#tinymce').click(); // we want to click the field before our input comes
+  await browser.keys(['meta', "A"]);
+  await browser.pause(2000);
+  await browser.keys('delete');
   await $('#tinymce').addValue('Typing into a frame...'); // Add value to existing text
   await browser.switchToParentFrame();
 
