@@ -198,7 +198,7 @@ When(/^Perform web interactions$/, async function() {
    * 1. scrollIntoView
    */
 
-  await (await $('span=Best Sellers in Books')).scrollIntoView();
+  await $('span=Best Sellers in Books').scrollIntoView();
 
   await browser.debug();
 
