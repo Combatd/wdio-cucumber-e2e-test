@@ -106,7 +106,7 @@ export const config: Options.Testrunner = {
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
     // baseUrl: 'https://admin:admin@localhost' // we can get a user name and password for base auth
-    baseUrl: 'http://amazon.com',
+    baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
