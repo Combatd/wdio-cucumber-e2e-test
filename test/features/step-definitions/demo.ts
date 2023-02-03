@@ -31,7 +31,7 @@ Then(/^URL should match (.*)$/, async function(expectedURL) {
  */
 
 Given(/^A web page is opened$/, async function() {
-  await browser.url('https://google.com');
+  await browser.url('/');
   await browser.setTimeout({implicit: 15000, pageLoad: 15000});
   await browser.maximizeWindow();
 });
@@ -175,22 +175,30 @@ When(/^Perform web interactions$/, async function() {
   // await browser.switchToParentFrame();
 
   /**
-   * 7. Key press
+   * 6a. Key press
    * Methods used:
    * 1. switchToFrame
    * 2. switchtoParentFrame
    */
 
-  await $('=iFrame').click();
-  let frameEle = await $('#mce_0)str');
-  await browser.switchToFrame(frameEle);
-  // Interactions with frames...
-  await $('#tinymce').click(); // we want to click the field before our input comes
-  await browser.keys(['meta', "A"]);
-  await browser.pause(2000);
-  await browser.keys('delete');
-  await $('#tinymce').addValue('Typing into a frame...'); // Add value to existing text
-  await browser.switchToParentFrame();
+  // await $('=iFrame').click();
+  // let frameEle = await $('#mce_0)str');
+  // await browser.switchToFrame(frameEle);
+  // // Interactions with frames...
+  // await $('#tinymce').click(); // we want to click the field before our input comes
+  // await browser.keys(['meta', "A"]);
+  // await browser.pause(2000);
+  // await browser.keys('delete');
+  // await $('#tinymce').addValue('Typing into a frame...'); // Add value to existing text
+  // await browser.switchToParentFrame();
+
+  /**
+   * 7. Basic scrolling
+   * Methods: (Element methods)
+   * 1. scrollIntoView
+   */
+
+  await $('span=Best Sellers in Books').scrollIntoView();
 
   await browser.debug();
 
