@@ -13,3 +13,25 @@ Then(/^Inventory page should list (.*)$/, async function(numOfProducts) {
   await chai.expect(eleArr.length).to.equal(parseInt(numOfProducts)); // chai will get string type if you don't convert
 
 });
+
+Then(/^Then Validate all products have valid price$/, async function() {
+  /**
+   * Steps: 
+   * 1. Get price list
+   * 2. Convert string to number
+   * 3. Assert if any value is less than or equal to 0 (invalid price)
+   */
+
+  // * 1. Get price list
+  let elementArr = await $$('.inventory_item_price');
+  let priceStrArr = []; // every time it iterates, we will push to this array
+  for (let i = 0; i < elementArr.length; i++) {
+    let priceStr = elementArr[i].getText();
+    priceStrArr.push(priceStr);
+  }
+  console.log(`>> Price with $: ${priceStrArr}`);
+
+  // * 2. Convert string to number
+  
+
+});
