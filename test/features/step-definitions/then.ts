@@ -32,6 +32,7 @@ Then(/^Then Validate all products have valid price$/, async function() {
   console.log(`>> Price with $: ${priceStrArr}`);
 
   // * 2. Convert string to number
-  
+  let priceNumArr = priceStrArr.map(ele => +(ele.replace('$', ''))); // parseInt(ele.replace('$', '') for whole number
+  console.log(`>> Price in numbers: ${priceNumArr}`);
 
 });
