@@ -35,4 +35,7 @@ Then(/^Then Validate all products have valid price$/, async function() {
   let priceNumArr = priceStrArr.map(ele => +(ele.replace('$', ''))); // parseInt(ele.replace('$', '') for whole number
   console.log(`>> Price in numbers: ${priceNumArr}`);
 
+  // * 3. Assert if any value is less than or equal to 0 (invalid price)
+  let invalidPriceArr = priceNumArr.filter(ele => ele <= 0); // if anything is less than or equal to 0, the array will have values
+  await chai.expect(invalidPriceArr.length).to.equal(0);
 });
