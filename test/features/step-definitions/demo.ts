@@ -220,7 +220,39 @@ When(/^Perform web interactions$/, async function() {
   let columnCount = await $$('//table[@id="table1"/thead/tr/th').length;
     console.log('>> Number of column: ' + columnCount);
   await chai.expect(columnCount).to.equal(6);
+
   // * 2. Get whole table data
+  // //table[@id="table1"/tbody/tr[2]/td[4] x-path example
+  let arr = [];
+  for (let i = 0; i < rowCount; i++) {
+    let personObj = {
+      lastName: '',
+      firstName: '',
+      email: '',
+      due: '',
+      web: ''
+    }
+    for (let j = 0; j < columnCount; j++) {
+      let cellVal = await $(`//table[@id="table1"/tbody/tr[${i}}]/td[${j}]`).getText();
+      if (j === 0) {
+        personObj.lastName = cellVal;
+      }
+      if (j === 1) {
+        personObj.firstName = cellVal;
+      }
+      if (j === 2) {
+        personObj.email = cellVal;
+      }
+      if (j === 3) {
+        personObj.due = cellVal;
+      }
+      if (j === 4) {
+        personObj.web = cellVal;
+      }
+    }
+    arr.push(personObj);
+  }
+  console.log(`Whole Table: ${JSON.stringify(arr)}`);
 
   // * 3. Get single row (based on a condition)
 
