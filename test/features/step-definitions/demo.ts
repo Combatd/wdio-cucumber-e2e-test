@@ -198,7 +198,35 @@ When(/^Perform web interactions$/, async function() {
    * 1. scrollIntoView
    */
 
-  await $('span=Best Sellers in Books').scrollIntoView();
+  //await $('span=Best Sellers in Books').scrollIntoView();
+
+
+/**
+ *  Web table:
+ * 1. Check number of rows and columns
+ * 2. Get whole table data
+ * 3. Get single row (based on a condition)
+ * 4. Get single column
+ * 5. Get single cell value (based on another cell)
+ * 
+ * 
+ */
+
+
+  // * 1. Check number of rows and columns
+  let rowCount = await $$('//table[@id="table1"/tbody/tr').length;
+  await chai.expect(rowCount).to.equal(4);
+  console.log('>> Number of rows: ' + rowCount);
+  let columnCount = await $$('//table[@id="table1"/thead/tr/th').length;
+    console.log('>> Number of column: ' + columnCount);
+  await chai.expect(columnCount).to.equal(6);
+  // * 2. Get whole table data
+
+  // * 3. Get single row (based on a condition)
+
+  // * 4. Get single column
+
+  // * 5. Get single cell value (based on another cell)
 
   await browser.debug();
 
