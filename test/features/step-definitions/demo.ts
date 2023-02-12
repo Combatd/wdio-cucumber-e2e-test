@@ -223,42 +223,97 @@ When(/^Perform web interactions$/, async function() {
 
   // * 2. Get whole table data
   // //table[@id="table1"/tbody/tr[2]/td[4] x-path example
-  let arr = [];
-  for (let i = 0; i < rowCount; i++) {
-    let personObj = {
-      lastName: '',
-      firstName: '',
-      email: '',
-      due: '',
-      web: ''
-    }
-    for (let j = 0; j < columnCount; j++) {
-      let cellVal = await $(`//table[@id="table1"/tbody/tr[${i}}]/td[${j}]`).getText();
-      if (j === 0) {
-        personObj.lastName = cellVal;
-      }
-      if (j === 1) {
-        personObj.firstName = cellVal;
-      }
-      if (j === 2) {
-        personObj.email = cellVal;
-      }
-      if (j === 3) {
-        personObj.due = cellVal;
-      }
-      if (j === 4) {
-        personObj.web = cellVal;
-      }
-    }
-    arr.push(personObj);
-  }
+
+  // let arr = [];
+  // for (let i = 0; i < rowCount; i++) {
+  //   let personObj = {
+  //     lastName: '',
+  //     firstName: '',
+  //     email: '',
+  //     due: '',
+  //     web: ''
+  //   }
+  //   for (let j = 0; j < columnCount; j++) {
+  //     let cellVal = await $(`//table[@id="table1"/tbody/tr[${i}}]/td[${j}]`).getText();
+  //     if (j === 0) {
+  //       personObj.lastName = cellVal;
+  //     }
+  //     if (j === 1) {
+  //       personObj.firstName = cellVal;
+  //     }
+  //     if (j === 2) {
+  //       personObj.email = cellVal;
+  //     }
+  //     if (j === 3) {
+  //       personObj.due = cellVal;
+  //     }
+  //     if (j === 4) {
+  //       personObj.web = cellVal;
+  //     }
+  //   }
+  //   arr.push(personObj);
+  // }
   console.log(`Whole Table: ${JSON.stringify(arr)}`);
 
   // * 3. Get single row (based on a condition)
+  // let arr = [];
+  // for (let i = 0; i < rowCount; i++) {
+  //   let personObj = {
+  //     lastName: '',
+  //     firstName: '',
+  //     email: '',
+  //     due: '',
+  //     web: ''
+  //   }
+  //   for (let j = 0; j < columnCount; j++) {
+  //     let cellVal = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[${j + 1}]`).getText();
+  //     let firstname = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[2]`).getText();
+  //     if (firstname === 'Jason') {
+  //       if (j === 0) {
+  //         personObj.lastName = cellVal;
+  //       }
+  //       if (j === 1) {
+  //         personObj.firstName = cellVal;
+  //       }
+  //       if (j === 2) {
+  //         personObj.email = cellVal;
+  //       }
+  //       if (j === 3) {
+  //         personObj.due = cellVal;
+  //       }
+  //       if (j === 4) {
+  //         personObj.web = cellVal;
+  //       }
+  //     }
+
+  //   }
+  //   if (personObj.firstName) {
+  //     arr.push(personObj);
+  //   }
+
+  // }
 
   // * 4. Get single column
+  // let columnArr = [];
+  // for (let i = 0; i < rowCount; i++) {
+  //   let cellVal = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[4]`).getText(); // fetch the 4th column containing price
+  //   columnArr.push(cellVal);
+  // }
+  // console.log(`All single column values: ${columnArr}`);
 
   // * 5. Get single cell value (based on another cell)
+  let arr = [];
+  for (let i = 0; i < rowCount; i++) {
+    for (let j = 0; j < columnCount; j++) {
+      let cellVal = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[${j + 1}]`).getText(); // fetch the 4th column containing price
+      let price = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[4]`).getText(); // fetch the 4th column containing price
+      if (+(price.replace("$", "")) > ) {
+        arr.push(cellVal);
+      }
+    }
+  }
+  console.log(`>> Single col values: ${arr}`);
+
 
   await browser.debug();
 
