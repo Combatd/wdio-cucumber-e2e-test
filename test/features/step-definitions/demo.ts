@@ -302,18 +302,54 @@ When(/^Perform web interactions$/, async function() {
   // console.log(`All single column values: ${columnArr}`);
 
   // * 5. Get single cell value (based on another cell)
-  let arr = [];
-  for (let i = 0; i < rowCount; i++) {
-    for (let j = 0; j < columnCount; j++) {
-      let cellVal = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[${j + 1}]`).getText(); // fetch the 4th column containing price
-      let price = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[4]`).getText(); // fetch the 4th column containing price
-      if (+(price.replace("$", "")) > ) {
-        arr.push(cellVal);
-      }
-    }
-  }
-  console.log(`>> Single col values: ${arr}`);
+  // let arr = [];
+  // for (let i = 0; i < rowCount; i++) {
+  //   for (let j = 0; j < columnCount; j++) {
+  //     let cellVal = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[${j + 1}]`).getText(); // fetch the 4th column containing price
+  //     let price = await $(`//table[@id="table1"/tbody/tr[${i + 1}}]/td[4]`).getText(); // fetch the 4th column containing price
+  //     if (+(price.replace("$", "")) > ) {
+  //       arr.push(cellVal);
+  //     }
+  //   }
+  // }
+  // console.log(`>> Single col values: ${arr}`);
 
+  /**
+   * Scrolling
+   * 
+   * Visible Portion
+   * Window Object
+   * 1. scrollBy
+   * Y -> [-]window.innerHeight
+   */
+  // scroll down
+  await browser.execute(() => {
+    window.scrollBy(0, window.innerHeight);
+  });
+
+  await browser.pause(2000);
+
+  // scroll top
+  await browser.execute(() => {
+    window.scrollBy(0, -window.innerHeight);
+  });
+
+  await browser.pause(2000);
+  /**
+   * Invisible Portion
+   * window select
+   * 1. scrollTo
+   * Y -> document.body.scrollTop(scrollHeight)
+   */
+  await browser.execute(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+
+  await browser.pause(2000);
+
+  await browser.execute(() => {
+    window.scrollTo(0, document.body.scrollTop);
+  });
 
   await browser.debug();
 
