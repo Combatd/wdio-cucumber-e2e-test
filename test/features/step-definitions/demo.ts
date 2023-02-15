@@ -6,7 +6,7 @@ Given(/^Google page is opened$/, async function() {
   await browser.url('https://www.google.com');
   await browser.pause(1000);
   console.log('After opening browser...');
-  console.log(`>> Broser: ${JSON.stringify(browser)}`);
+  console.log(`>> Browser: ${JSON.stringify(browser)}`);
 });
 
 When(/^Search with (.*)$/, async function(searchItem) {
