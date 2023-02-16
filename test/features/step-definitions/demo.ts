@@ -6,7 +6,6 @@ Given(/^Google page is opened$/, async function() {
   await browser.url('https://www.google.com');
   await browser.pause(1000);
   console.log('After opening browser...');
-  console.log(`>> Browser: ${JSON.stringify(browser)}`);
 });
 
 When(/^Search with (.*)$/, async function(searchItem) {
@@ -14,7 +13,6 @@ When(/^Search with (.*)$/, async function(searchItem) {
   let ele = await $(`[name=q]`);
   await ele.setValue(searchItem);
   await browser.keys('Enter');
-  console.log(`>> ele object: ${JSON.stringify(ele)}`);
 });
 
 Then(/^Click on the first search result$/, async function() {
@@ -24,6 +22,14 @@ Then(/^Click on the first search result$/, async function() {
 
 Then(/^URL should match (.*)$/, async function(expectedURL) {
   console.log(`>> expectedURL: ${expectedURL}`);
+  let webDriverTitle = "WebdriverIO · Next-gen browser and mobile automation test framework for Node.js | WebdriverIO"
+  await browser.waitUntil(async function() {
+    return await browser.getTitle() === webDriverTitle;
+  }, {
+    timeout: 20000,
+    interval: 500,
+    timeoutMsg: `Failed loading WDIO web page ${await browser.getTitle()}`
+  });
   let url = await browser.getUrl();
   await chai.expect(url).to.equal(expectedURL);
 }); 
