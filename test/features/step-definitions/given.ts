@@ -36,8 +36,8 @@ Given(/^Login to inventory web app$/, async function() {
   // await $('#password').setValue('secret_sauce'); // in actual projects, use environment variables
   // await $('#login-button').click();
 
-  await browser.back(); // go back in the browser history one step to the inventory page
-  await browser.pause(2000);
-
-  await browser.debug();
+  // await browser.back(); // go back in the browser history one step to the inventory page
+  // await browser.pause(2000);
+  // await browser.forward();
+  // await browser.debug();
 });
