@@ -1,5 +1,7 @@
 import type { Options } from '@wdio/types'
 
+let headless = process.env.HEADLESS;
+console.log(`>> The headless flag: ${headless}`);
 export const config: Options.Testrunner = {
     //
     // ====================
@@ -69,7 +71,7 @@ export const config: Options.Testrunner = {
         //
         browserName: 'chrome',
         "goog:chromeOptions": {
-          args: ['--disable-web-security']
+          args: headless.toUpperCase() === "Y" ? ['--disable-web-security', '--headless', '--disable-dev-shm-usage', '--no-sandbox', '--window-size=1920,1080'] : []
         },
         acceptInsecureCerts: true,
         timeouts: { implicit: 10000, pageLoad: 20000, script: 30000 },
