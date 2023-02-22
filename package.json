@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "demo": "npx wdio wdio.conf.ts --cucumberOpts.tagExpressions'@demo'",
+    "smoke": "npx wdio wdio.conf.ts --cucumberOpts.tagExpressions'@smoke'",
     "wdio": "wdio run ./wdio.conf.ts"
   },
   "repository": {

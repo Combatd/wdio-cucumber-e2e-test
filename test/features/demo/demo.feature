@@ -9,4 +9,4 @@ Feature: Demo Feature
 
   Examples:
     | TestID | SearchItem | ExpectedURL |
-    | DEMO_TC001 | WDIO | https://www.wdio.com/ |
+    | DEMO_TC001 | WDIO | https://www.webdriver.io/ |
