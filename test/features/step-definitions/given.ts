@@ -2,6 +2,7 @@ import { Given } from '@cucumber/cucumber';
 import chai from 'chai';
 
 Given(/^Login to inventory web app$/, async function() {
+  console.log(`Test username: ${process.env.TEST_USERNAME}`)
   /**
    * 1. Launch browser
    */
@@ -14,8 +15,8 @@ Given(/^Login to inventory web app$/, async function() {
    * 2. Login to inventory app
    */
   try {
-    await $('#user-name').setValue('standard_user');
-    await $('#password').setValue('secret_sauce'); // in actual projects, use environment variables
+    await $('#user-name').setValue(process.env.TEST_STD_USERNAME);
+    await $('#password').setValue(process.env.TEST_STD_PASSWORD); // in actual projects, use environment variables
     await $('#login-button').click();
   } catch (err) {
     console.log('Error in first login, Retrying...');
