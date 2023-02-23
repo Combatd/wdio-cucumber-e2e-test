@@ -1,4 +1,5 @@
 # End to End Test Automation with WebDriver IO
+Much of the configurations will be done in the ```wdio.conf.ts``` file.
 
 ## Directory
 * config
