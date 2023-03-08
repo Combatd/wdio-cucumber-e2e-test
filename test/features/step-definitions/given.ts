@@ -6,7 +6,11 @@ Given(/^Login to inventory web app$/, async function() {
   /**
    * 1. Launch browser
    */
-  await browser.url('https://saucedemo.com');
+  // await browser.url('https://saucedemo.com');
+  // @ts-ignore
+  await browser.url(browser.config.sauceDemoURL);
+  console.log (`>> Test config values: ${JSON.stringify(browser.config)}`);
+  
   // await browser.setTimeout( { implicit: 15000, pageLoad: 10000 } )
   // await browser.maximizeWindow();
 

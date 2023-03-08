@@ -6,8 +6,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:demo": "export HEADLESS=N && npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpressions'@demo'",
+    "test:smoke": "export HEADLESS=N && npx config/wdio.test.conf.ts --cucumberOpts.tagExpressions'@smoke'",
+    "uat:demo": "export HEADLESS=N && npx wdio config/wdio.uat.conf.ts --cucumberOpts.tagExpressions'@demo'",
+    "uat:smoke": "export HEADLESS=N && npx config/wdio.uat.conf.ts --cucumberOpts.tagExpressions'@smoke'",
     "demo": "export HEADLESS=N && npx wdio wdio.conf.ts --cucumberOpts.tagExpressions'@demo'",
     "smoke": "export HEADLESS=N && npx wdio wdio.conf.ts --cucumberOpts.tagExpressions'@smoke'",
+
     "wdio": "wdio run ./wdio.conf.ts"
   },
   "repository": {
