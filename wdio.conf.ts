@@ -1,6 +1,7 @@
 import type { Options } from '@wdio/types'
 
 let headless = process.env.HEADLESS;
+let debug = process.env.DEBUG;
 
 export const config: Options.Testrunner = {
     //
@@ -87,7 +88,7 @@ export const config: Options.Testrunner = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: debug.toUpperCase() === "Y" ? 'info' : 'error',
     //
     // Set specific log levels per logger
     // loggers:

@@ -33,3 +33,9 @@ Feature: Feature name
         | Header 1 | Header 2 | Header 3 |
         | Value 1  | Value 2  | Value 3  |
 ```
+
+## Merge different environment configuration files
+1. Create different environment files (e.g. test, uat, preprod)
+2. Merge with wdio conf file (using ```Object.assign```)
+3. Update ```package.json``` file with new conf path
+4. Access the property with ```browser.config.<key>```, update and run test
