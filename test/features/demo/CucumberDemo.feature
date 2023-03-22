@@ -6,15 +6,17 @@ I can have more info about the feature here.
 - To do list
 
     Feature Description
-    @smoke
-    Scenario: Scenario name
-    Given 
-    Given 
+    Background: Launch google page
+    Given Google page is opened
 
     Scenario: Scenario name
-    Given 
-    Given 
+      Given Google page is opened
+      When Search with WDIO
+      Then Click on the first search result
+      * URL should match https://wdio.com
 
     Scenario: Scenario name
-    Given 
-    Given 
+      Given Google page is opened
+      When Search with WDIO
+      Then Click on the first search result
+      * URL should match https://wdio.com
