@@ -10,13 +10,11 @@ I can have more info about the feature here.
     Given Google page is opened
 
     Scenario: Scenario name
-      Given Google page is opened
       When Search with WDIO
       Then Click on the first search result
       * URL should match https://wdio.com
 
     Scenario: Scenario name
-      Given Google page is opened
       When Search with WDIO
       Then Click on the first search result
       * URL should match https://wdio.com
