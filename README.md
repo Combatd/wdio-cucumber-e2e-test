@@ -34,6 +34,17 @@ Feature: Feature name
         | Value 1  | Value 2  | Value 3  |
 ```
 
+## Scenario, Steps and Background
+1. Steps:
+  * Given - Precondition
+  * When - Event or action
+  * Then - Results
+  * And, But and * can be used
+  * Same step with different step keywords are considered as 'duplicate'
+2. Scenario used to describe a specific scenario
+3. Background is sued to perform certain steps repeatedly for all scenarios
+4. Only one background is allowed in a single feature file
+
 ## Merge different environment configuration files
 1. Create different environment files (e.g. test, uat, preprod)
 2. Merge with wdio conf file (using ```Object.assign```)

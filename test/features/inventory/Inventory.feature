@@ -2,7 +2,8 @@ Feature: Inventory
 
   @demo @smoke @debug
   Scenario Outline: Demo Inventory
-    Given Login to inventory web app
+    # Given Login to inventory web app
+    Given As a standard user I login to inventory web app
     Then Inventory page should list <NumberOfProducts>
     Then Validate all products have valid price
 

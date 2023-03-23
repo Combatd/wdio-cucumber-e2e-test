@@ -1,7 +1,7 @@
 import { Then } from '@cucumber/cucumber';
 import chai from 'chai';
 
-Then(/^Inventory page should list (.*)$/, async function(numOfProducts) {
+Then(/^Inventory page should list (.*)\s?list (.*)$/, async function(negativeCheck, numOfProducts) {
   if (!numOfProducts) throw Error(`Invalid number provided: ${numOfProducts}`)
 
   /**

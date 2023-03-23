@@ -1,8 +1,10 @@
 import { Given } from '@cucumber/cucumber';
 import chai from 'chai';
 
-Given(/^Login to inventory web app$/, async function() {
+Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefixText, userType) {
+  console.log(`The userType: ${userType}`)
   console.log(`Test username: ${process.env.TEST_USERNAME}`)
+
   /**
    * 1. Launch browser
    */
