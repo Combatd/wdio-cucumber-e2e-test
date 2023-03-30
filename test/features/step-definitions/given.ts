@@ -1,9 +1,13 @@
 import { Given } from '@cucumber/cucumber';
 import chai from 'chai';
 
-Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefixText, userType) {
+Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefixText, userType, dataTable) {
   console.log(`The userType: ${userType}`)
   console.log(`Test username: ${process.env.TEST_USERNAME}`)
+  // Getting values from data table
+  let dt = dataTable.hashes();
+  console.log(`>> The type of dt: ${dt.constructor}`);
+  console.log(`>> The value of dt: ${JSON.stringify(dt)}`);
 
   /**
    * 1. Launch browser
@@ -21,7 +25,8 @@ Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefi
    * 2. Login to inventory app
    */
   try {
-    await $('#user-name').setValue(process.env.TEST_STD_USERNAME);
+    // await $('#user-name').setValue(process.env.TEST_STD_USERNAME);
+    await $('#user-name').setValue(dt[0].Username);
     await $('#password').setValue(process.env.TEST_STD_PASSWORD); // in actual projects, use environment variables
     await $('#login-button').click();
   } catch (err) {
