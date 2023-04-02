@@ -9,7 +9,7 @@ Given(/^Google page is opened$/, async function() {
 });
 
 When(/^Search with (.*)$/, async function(searchItem) {
-  console.log(`>> searchItem ${searchItem}`);
+  // console.log(`>> searchItem ${searchItem}`);
   let ele = await $(`[name=q]`);
   await ele.setValue(searchItem);
   await browser.keys('Enter');
@@ -21,7 +21,7 @@ Then(/^Click on the first search result$/, async function() {
 });
 
 Then(/^URL should match (.*)$/, async function(expectedURL) {
-  console.log(`>> expectedURL: ${expectedURL}`);
+  // console.log(`>> expectedURL: ${expectedURL}`);
   let webDriverTitle = "WebdriverIO · Next-gen browser and mobile automation test framework for Node.js | WebdriverIO"
   await browser.waitUntil(async function() {
     return await browser.getTitle() === webDriverTitle;
