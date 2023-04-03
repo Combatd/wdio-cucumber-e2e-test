@@ -2,6 +2,7 @@ import { Then } from '@cucumber/cucumber';
 import chai from 'chai';
 
 Then(/^Inventory page should list (.*)\s?list (.*)$/, async function(negativeCheck, numOfProducts) {
+  console.log(`this.appid >> ${this.appid}`); // from the CustomWorld instance
   if (!numOfProducts) throw Error(`Invalid number provided: ${numOfProducts}`)
 
   /**

@@ -50,3 +50,10 @@ Feature: Feature name
 2. Merge with wdio conf file (using ```Object.assign```)
 3. Update ```package.json``` file with new conf path
 4. Access the property with ```browser.config.<key>```, update and run test
+
+## World Object
+1. Create a ```world.ts``` file under ```step-definitions```
+2. Import ```setWordConstructor``` from cucumber
+3. Create ```CustomWorld``` class and set it as an argument to ```setWorldConstructor```
+
+* The values are accessible only per scenario/iteration and values are reset at every new scenario/iteration
