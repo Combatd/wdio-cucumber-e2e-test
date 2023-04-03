@@ -52,4 +52,7 @@ Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefi
   // await browser.pause(2000);
   // await browser.forward();
   // await browser.debug();
+
+  // this = CustomWorld instance
+  this.appid = 'ABC123';
 });
