@@ -57,3 +57,7 @@ Feature: Feature name
 3. Create ```CustomWorld``` class and set it as an argument to ```setWorldConstructor```
 
 * The values are accessible only per scenario/iteration and values are reset at every new scenario/iteration
+
+### this.testid
+* Follow this convention when writing scenario or scenario outline:
+  * ```<TestID>: <Description of scenario>```
