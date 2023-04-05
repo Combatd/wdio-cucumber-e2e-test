@@ -2,8 +2,11 @@ import { Given } from '@cucumber/cucumber';
 import chai from 'chai';
 
 Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefixText, userType, dataTable) {
-  console.log(`The userType: ${userType}`)
-  console.log(`Test username: ${process.env.TEST_USERNAME}`)
+  // Get the testid
+  console.log(`>> Starting ${this.testid}`);
+  console.log(`>> Given step Test ID: ${this.testid}`);
+
+
   // Getting values from data table
   let dt = dataTable.hashes();
   console.log(`>> The type of dt: ${dt.constructor}`);
