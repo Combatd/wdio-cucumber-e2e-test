@@ -13,7 +13,6 @@
     "uat:smoke": "export DEBUG=N && export HEADLESS=Y && npx config/wdio.uat.conf.ts --cucumberOpts.tagExpressions'@smoke'",
     "demo": "export HEADLESS=N && npx wdio wdio.conf.ts --cucumberOpts.tagExpressions'@demo'",
     "smoke": "export HEADLESS=N && npx wdio wdio.conf.ts --cucumberOpts.tagExpressions'@smoke'",
-
     "wdio": "wdio run ./wdio.conf.ts"
   },
   "repository": {
@@ -42,6 +41,7 @@
     "dotenv": "^16.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4",
-    "wdio-chromedriver-service": "^8.0.1"
+    "wdio-chromedriver-service": "^8.0.1",
+    "winston": "^3.8.2"
   }
 }
