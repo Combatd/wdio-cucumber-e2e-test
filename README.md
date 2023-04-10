@@ -67,3 +67,14 @@ Feature: Feature name
 2. Create logger file under /helper directory
 3. Set log level in ```process.env``` as 'debug'
 4. Import logger in different files and start using it
+
+## Allure Reporter
+* ```npm install -g allure-commandline```
+* Issue this command: ```which/where allure``` should return the install path
+* Set these two flags
+  1. ```disableWebdriverStepsReporting: true```
+  1. ```useCucumberStepReporter: true```
+
+### Tips, Issues, and challenges
+1. You can see allure options in ```node_modules``` folder
+2. In office network, you may need to turn-off proxy setting before running allure
