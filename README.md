@@ -61,3 +61,9 @@ Feature: Feature name
 ### this.testid
 * Follow this convention when writing scenario or scenario outline:
   * ```<TestID>: <Description of scenario>```
+
+## Set up logger winston
+1. ``` npm install --save-dev winston```
+2. Create logger file under /helper directory
+3. Set log level in ```process.env``` as 'debug'
+4. Import logger in different files and start using it
