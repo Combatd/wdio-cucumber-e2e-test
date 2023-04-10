@@ -1,5 +1,6 @@
 import { Then } from '@cucumber/cucumber';
 import chai from 'chai';
+import logger from '../../helper/logger.js';
 
 Then(/^Inventory page should list (.*)\s?list (.*)$/, async function(negativeCheck, numOfProducts) {
   console.log(`this.appid >> ${this.appid}`); // from the CustomWorld instance
@@ -22,7 +23,7 @@ Then(/^Then Validate all products have valid price$/, async function() {
    * 2. Convert string to number
    * 3. Assert if any value is less than or equal to 0 (invalid price)
    */
-
+  logger.info(`${this.testid}: Starting to login sauce demo app`);
   // * 1. Get price list
   let elementArr = await $$('.inventory_item_price');
   let priceStrArr = []; // every time it iterates, we will push to this array
