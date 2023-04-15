@@ -78,3 +78,13 @@ Feature: Feature name
 ### Tips, Issues, and challenges
 1. You can see allure options in ```node_modules``` folder
 2. In office network, you may need to turn-off proxy setting before running allure
+
+## Exception Handling
+* An exception is a condition that interrupts/stops normal code execution.
+  * Standard JavaScript errors: ReferenceError, SyntaxError, TypeError
+  * Custom Error (using throw Error functional call)
+  * Chai Assertion failure
+* There are two main causes for execution failure
+  * Error prone test code
+  * Application bug
+* You can use ```try/catch``` or other conditional branching to catch exceptions
