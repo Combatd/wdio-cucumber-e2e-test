@@ -1,6 +1,7 @@
 import { Then } from '@cucumber/cucumber';
 import chai from 'chai';
-import logger from '../../helper/logger.js';
+import logger from '../../helper/logger';
+import reporter from '../../helper/reporter';
 
 Then(/^Inventory page should list (.*)\s?list (.*)$/, async function(negativeCheck, numOfProducts) {
   console.log(`this.appid >> ${this.appid}`); // from the CustomWorld instance
@@ -20,8 +21,8 @@ Then(/^Inventory page should list (.*)\s?list (.*)$/, async function(negativeChe
 
     try {
       await chai.expect(eleArr.length).to.equal(parseInt(numOfProducts)); // chai will get string type if you don't convert
-    } catch {
-      await logger.error('Known bug - product count mismatch...');
+    } catch (err) {
+      reporter.addStep(this.testid, 'error', 'Known issue - product count mismatch', true, 'JIRA-123');
     }
   } catch (err) {
     console.log(`>> The type of err: ${typeof err}`);

@@ -1,10 +1,10 @@
 import { Given } from '@cucumber/cucumber';
 import chai from 'chai';
-import logger from '../../helper/logger.js';
+import reporter from '../../helper/reporter.js';
 
 Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefixText, userType, dataTable) {
-  logger.info(`${this.testid}: Starting to login sauce demo app`);
-  
+  reporter.addStep(this.testid, 'info',`Starting to login sauce demo app`);
+
   // Get the testid
   console.log(`>> Starting ${this.testid}`);
   console.log(`>> Given step Test ID: ${this.testid}`);
@@ -61,4 +61,6 @@ Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefi
 
   // this = CustomWorld instance
   this.appid = 'ABC123';
+
+  reporter.addStep(this.testid, 'debug', 'login is successful');
 });
