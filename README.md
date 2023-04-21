@@ -88,3 +88,11 @@ Feature: Feature name
   * Error prone test code
   * Application bug
 * You can use ```try/catch``` or other conditional branching to catch exceptions
+
+## Core Characteristics of a Test Framework
+* Modular
+* Extendable
+* Reporting
+* Maintainable
+* Usable
+* Reliable
