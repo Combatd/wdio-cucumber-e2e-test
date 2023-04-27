@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "moduleResolution": "node",
-        "module": "ESNext",
+        "module": "CommonJS",
         "types": [
             "node",
             "@wdio/globals/types",

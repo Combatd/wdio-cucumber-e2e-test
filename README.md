@@ -88,3 +88,18 @@ Feature: Feature name
   * Error prone test code
   * Application bug
 * You can use ```try/catch``` or other conditional branching to catch exceptions
+
+## Core Characteristics of a Test Framework
+* Modular
+* Extendable
+* Reporting
+* Maintainable
+* Usable
+* Reliable
+
+### Best Practices - Handling Data
+* .env - Things which can't be revealed publicly, holds all secret info including credentials
+* ./config - all environemnt specific variables e.g. URL, DB query, API endpoint
+* ./data/constants[js/json] - Really constant irrespective of environments. At project scope
+* GLOBAL variable (browser.config base file) - anything that can be set and get different files in projects
+* world object - exchange information between steps
