@@ -29,3 +29,5 @@ class Page {
     await ele.setValue(text);
   }
 }
+
+export default Page;
