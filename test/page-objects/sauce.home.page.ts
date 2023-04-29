@@ -28,7 +28,7 @@ class HomePage extends Page {
   }
 
   enterPassword = async function(testid: string, password: string) {
-    if (!password) throw Error(`Given username is not valid`);
+    if (!password) throw Error(`Given password is not valid`);
 
     try {
       password = password.trim();
@@ -46,7 +46,7 @@ class HomePage extends Page {
       await this.click(await this.loginBtn);
       reporter.addStep(testid, 'info', `login button clicked`);
     } catch (err) {
-      err.message = `Error clicking login button, ${err.message}`;
+      err.message = `${this.testid} Error clicking login button, ${err.message}`;
       throw err;
     }
 
