@@ -26,11 +26,13 @@
   },
   "homepage": "https://github.com/Combatd/wdio-cucumber-e2e-test#readme",
   "dependencies": {
+    "mssql": "^9.1.1",
     "wdio": "^6.0.1",
     "wdio-cli": "^5.0.0-alpha.7"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
+    "@types/mssql": "^8.1.2",
     "@types/supertest": "^2.0.12",
     "@wdio/allure-reporter": "^8.1.2",
     "@wdio/cli": "^8.1.3",
