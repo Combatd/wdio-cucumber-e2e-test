@@ -2,6 +2,9 @@ import { Given } from '@cucumber/cucumber';
 import chai from 'chai';
 import reporter from '../../helper/reporter.js';
 import sauceHomePage from '../../page-objects/sauce.home.page';
+import constants from '../../../data/constants.json' assert {type: 'json'}
+import apiHelper from '../../helper/apiHelper.js';
+import fs from 'fs';
 
 
 Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefixText, userType, dataTable) {
@@ -72,4 +75,42 @@ Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefi
   // this.appid = 'ABC123';
 
   // reporter.addStep(this.testid, 'debug', 'login is successful');
+});
+
+
+/**
+ * Get list of users from reqres api
+ * Sub-steps:
+ * 1. Get payload data
+ * 2. Make get call by using API helper
+ * 3. Store results
+ */
+Given(/^Get list of (.*) from regres.in$/, async function(endpointRef) {
+  if (!endpointRef) throw Error(`Given endpoint ref: ${endpointRef} is not valid`);
+
+  try {
+    let endpoint = '';
+    /**1. Get payload data*/
+    reporter.addStep(this.testid, "info", `Getting the payload data endpoint: ${endpointRef}`);
+    if (endpointRef.trim().toUpperCase() === "USERS") {
+      endpoint = constants.REQRES.GET_USERS;
+    }
+  
+    /** 2. Make get call by using API helper */
+    let res;
+    await browser.call(async function() {
+      // @ts-ignore
+      res = apiHelper.GET(this.testid, browser.config.reqresBaseURL, endpoint, "", constants.REQRES.QUERY_PARAM);
+    });
+    // @ts-ignore
+    if (res.status !== 200) await chai.expect.fail(`Failed getting users from ${browser.config.reqresBaseURL}/${endpoint}`);
+    let data = JSON.stringify(res.body);
+    let filename = `${process.cwd()}/data/api-rest/reqresAPIUsers.json`;
+    fs.writeFileSync(filename, data);
+    reporter.addStep(this.testid, "info", `API response from ${endpoint} stored in json file`);
+  } catch (err) {
+    err.message = `${this.testid}: Failed at getting API users from reqres, ${err.message}`;
+    throw err;
+  }
+
 });

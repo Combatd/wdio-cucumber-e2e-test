@@ -59,3 +59,7 @@ Then(/^Then Validate all products have valid price$/, async function() {
   let invalidPriceArr = priceNumArr.filter(ele => ele <= 0); // if anything is less than or equal to 0, the array will have values
   await chai.expect(invalidPriceArr.length).to.equal(0);
 });
+
+Then(/^Verify if all users exist in customer list$/, async function() {
+
+});
