@@ -9,3 +9,5 @@ When(/^As an (.*) user login to nopcommerce site$/, async function(user) {
 When(/^Search users in customer list$/, async function(user) {
 
 });
+
+// assert { type: "json" };
