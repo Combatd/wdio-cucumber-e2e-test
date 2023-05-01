@@ -73,3 +73,7 @@ Given(/^As (a|an) (.*) user I login to inventory web app$/, async function(prefi
 
   // reporter.addStep(this.testid, 'debug', 'login is successful');
 });
+
+Given(/^Get list of (.*) from regres.in$/, async function(endpointRef) {
+
+});
